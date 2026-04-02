@@ -11,8 +11,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install Gradle
-        uses: gradle/gradle-build-action@v2
+      - name: Install Gradle 8.2.1
+        run: |
+          wget https://services.gradle.org/distributions/gradle-8.2.1-bin.zip
+          unzip gradle-8.2.1-bin.zip
+          echo "GRADLE_HOME=$PWD/gradle-8.2.1" >> $GITHUB_ENV
+          echo "$PWD/gradle-8.2.1/bin" >> $GITHUB_PATH
 
       - name: Generate wrapper
         run: gradle wrapper --gradle-version 8.2.1

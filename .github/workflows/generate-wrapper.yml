@@ -1,0 +1,27 @@
+name: Generate Gradle Wrapper
+
+on:
+  workflow_dispatch:
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Gradle
+        uses: gradle/gradle-build-action@v2
+
+      - name: Generate wrapper
+        run: gradle wrapper --gradle-version 8.2.1
+
+      - name: Upload wrapper files
+        uses: actions/upload-artifact@v4
+        with:
+          name: wrapper-files
+          path: |
+            gradlew
+            gradlew.bat
+            gradle/wrapper/

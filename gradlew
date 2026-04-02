@@ -6,10 +6,18 @@
 ##
 ##############################################################################
 
-APP_BASE_NAME=`basename "$0"`
-APP_HOME=`dirname "$0"`
+# Attempt to set APP_HOME
+APP_HOME=$(cd "$(dirname "$0")" && pwd)
 
-# Add default JVM options here. You can also use JAVA_OPTS and GRADLE_OPTS to pass JVM options to this script.
+# Add default JVM options here
 DEFAULT_JVM_OPTS='"-Xmx64m" "-Xms64m"'
 
-exec "$APP_HOME/gradle/wrapper/gradle-wrapper.jar" "$@"
+# Locate Java
+if [ -n "$JAVA_HOME" ] ; then
+    JAVA_EXE="$JAVA_HOME/bin/java"
+else
+    JAVA_EXE="java"
+fi
+
+# Run Gradle
+exec "$JAVA_EXE" $DEFAULT_JVM_OPTS -classpath "$APP_HOME/gradle/wrapper/gradle-wrapper.jar" org.gradle.wrapper.GradleWrapperMain "$@"

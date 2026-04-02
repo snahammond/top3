@@ -1,9 +1,12 @@
 #!/usr/bin/env sh
 
 ##############################################################################
-# Gradle start up script for UN*X
+#
+#   Gradle start up script for UN*X
+#
 ##############################################################################
 
+# Attempt to set APP_HOME
 APP_HOME=$(cd "$(dirname "$0")" && pwd)
 
 # Resolve symlinks

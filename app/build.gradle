@@ -24,6 +24,13 @@ android {
     }
 }
 
+// app/build.gradle inside android.defaultConfig
+def newsApiKey = (project.hasProperty("newsApiKey") && project.property("newsApiKey") != null)
+        ? project.property("newsApiKey")
+        : ""
+
+buildConfigField "String", "NEWS_API_KEY", "\"${newsApiKey}\""
+
 dependencies {
     implementation "androidx.core:core-ktx:1.13.1"
     implementation "androidx.appcompat:appcompat:1.7.0"

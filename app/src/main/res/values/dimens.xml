@@ -1,0 +1,11 @@
+<resources>
+    <dimen name="padding_xsmall">4dp</dimen>
+    <dimen name="padding_small">8dp</dimen>
+    <dimen name="padding_medium">12dp</dimen>
+    <dimen name="padding_large">16dp</dimen>
+    <dimen name="card_radius">12dp</dimen>
+    <dimen name="card_elevation">6dp</dimen>
+    <dimen name="card_elevation_small">2dp</dimen>
+    <dimen name="hero_height">200dp</dimen>
+    <dimen name="thumb_size">72dp</dimen>
+</resources>

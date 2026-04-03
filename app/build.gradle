@@ -12,6 +12,24 @@ android {
         targetSdk 34
         versionCode 1
         versionName "1.0"
+        // --- Read newsApiKey from a project property (CI will pass -PnewsApiKey="...") ---
+        def newsApiKey = ""
+        if (project.hasProperty("newsApiKey") && project.property("newsApiKey") != null) {
+            newsApiKey = project.property("newsApiKey").toString()
+        } else {
+            // --- Fallback: try local.properties for local dev (do NOT commit local.properties) ---
+            def localPropsFile = rootProject.file("local.properties")
+            if (localPropsFile.exists()) {
+                def Properties props = new Properties()
+                props.load(localPropsFile.newDataInputStream())
+                newsApiKey = props.getProperty("NEWS_API_KEY", "")
+            }
+        }
+        
+        // Expose to Java as BuildConfig.NEWS_API_KEY
+        buildConfigField "String", "NEWS_API_KEY", "\"${newsApiKey}\""
+
+
     }
 
     buildFeatures {
@@ -23,13 +41,6 @@ android {
         targetCompatibility JavaVersion.VERSION_17
     }
 }
-
-// app/build.gradle inside android.defaultConfig
-def newsApiKey = (project.hasProperty("newsApiKey") && project.property("newsApiKey") != null)
-        ? project.property("newsApiKey")
-        : ""
-
-buildConfigField "String", "NEWS_API_KEY", "\"${newsApiKey}\""
 
 dependencies {
     implementation "androidx.core:core-ktx:1.13.1"

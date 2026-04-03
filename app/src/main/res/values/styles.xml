@@ -1,4 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!-- App theme -->
     <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/primary</item>
         <item name="colorOnPrimary">@color/surface</item>
@@ -6,6 +9,13 @@
         <item name="android:windowBackground">@color/background</item>
     </style>
 
+    <!-- The missing style referenced by AAPT -->
+    <style name="TextAppearance.App">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/text_primary</item>
+    </style>
+
+    <!-- Other text appearances used by the layouts -->
     <style name="TextAppearance.App.Header">
         <item name="android:textSize">20sp</item>
         <item name="android:textStyle">bold</item>
@@ -28,4 +38,5 @@
         <item name="android:textSize">12sp</item>
         <item name="android:textColor">@color/text_secondary</item>
     </style>
+
 </resources>

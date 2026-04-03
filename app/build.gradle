@@ -18,7 +18,7 @@ android {
         versionCode 1
         versionName "1.0"
 
-        // Read newsApiKey from a project property (CI will pass -PnewsApiKey="...")
+        // Read newsApiKey from a project property ( CI will pass -PnewsApiKey="..." )
         def newsApiKey = ""
         if (project.hasProperty("newsApiKey") && project.property("newsApiKey") != null) {
             newsApiKey = project.property("newsApiKey").toString()

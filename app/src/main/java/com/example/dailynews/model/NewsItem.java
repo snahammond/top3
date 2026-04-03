@@ -3,7 +3,7 @@ package com.example.dailynews.model;
 public class NewsItem {
     private final String title;
     private final String source;
-    private final String publishedAt;
+    private final String publishedAt; // ISO 8601 timestamp, e.g. 2026-04-03T20:30:00Z
     private final String imageUrl;
     private final String url;
 
@@ -13,6 +13,11 @@ public class NewsItem {
         this.publishedAt = publishedAt;
         this.imageUrl = imageUrl;
         this.url = url;
+    }
+
+    // Convenience constructor if you don't have a URL yet
+    public NewsItem(String title, String source, String publishedAt, String imageUrl) {
+        this(title, source, publishedAt, imageUrl, "");
     }
 
     public String getTitle() { return title; }

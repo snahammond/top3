@@ -9,6 +9,12 @@
         <item name="android:windowBackground">@color/background</item>
     </style>
 
+    <!-- The missing generic TextAppearance referenced by AAPT -->
+    <style name="TextAppearance">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/text_primary</item>
+    </style>
+
     <!-- The missing style referenced by AAPT -->
     <style name="TextAppearance.App">
         <item name="android:textSize">14sp</item>

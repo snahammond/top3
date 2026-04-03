@@ -3,73 +3,57 @@ package com.example.dailynews;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.text.SpannableStringBuilder;
-import android.text.method.LinkMovementMethod;
-import android.text.style.ClickableSpan;
-import android.view.View;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.dailynews.databinding.ActivityMainBinding;
+import com.example.dailynews.model.NewsItem;
+import com.example.dailynews.ui.TopStoriesAdapter;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ActivityMainBinding binding;
+    private RecyclerView rvTopStories;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+        setContentView(R.layout.activity_main);
+        rvTopStories = findViewById(R.id.rvTopStories);
+        rvTopStories.setLayoutManager(new LinearLayoutManager(this));
 
-        loadNews();
+        List<NewsItem> top3 = sampleData();
+        TopStoriesAdapter adapter = new TopStoriesAdapter(top3, item -> {
+            // Example click: open article URL if you have one
+            // If NewsItem had a url field, you could:
+            // startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(item.getUrl())));
+        });
+        rvTopStories.setAdapter(adapter);
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        loadNews();
-    }
-
-    private void loadNews() {
-        String json = NewsStorage.getNews(this);
-        if (json == null) {
-            binding.tvNews.setText("No news fetched yet. It will update around 7 PM daily.");
-            return;
-        }
-
-        try {
-            JSONArray arr = new JSONArray(json);
-            SpannableStringBuilder builder = new SpannableStringBuilder();
-
-            for (int i = 0; i < arr.length(); i++) {
-                JSONObject item = arr.getJSONObject(i);
-                final String title = item.optString("title", "Untitled");
-                final String url = item.optString("url", "");
-
-                int start = builder.length();
-                builder.append((i + 1) + ". " + title + "\n\n");
-                int end = builder.length();
-
-                if (!url.isEmpty()) {
-                    builder.setSpan(new ClickableSpan() {
-                        @Override
-                        public void onClick(@NonNull View widget) {
-                            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-                            startActivity(intent);
-                        }
-                    }, start, end, 0);
-                }
-            }
-
-            binding.tvNews.setText(builder);
-            binding.tvNews.setMovementMethod(LinkMovementMethod.getInstance());
-        } catch (Exception e) {
-            binding.tvNews.setText("Error parsing news.");
-        }
+    private List<NewsItem> sampleData() {
+        List<NewsItem> list = new ArrayList<>();
+        list.add(new NewsItem(
+                "Hero story title goes here — concise and compelling",
+                "BBC News",
+                "2h ago",
+                "https://via.placeholder.com/800x450.png?text=Hero+Image"
+        ));
+        list.add(new NewsItem(
+                "Second story headline that is short and scannable",
+                "The Guardian",
+                "3h ago",
+                "https://via.placeholder.com/200.png?text=Thumb+1"
+        ));
+        list.add(new NewsItem(
+                "Third story headline with a clear hook",
+                "Reuters",
+                "4h ago",
+                "https://via.placeholder.com/200.png?text=Thumb+2"
+        ));
+        return list;
     }
 }

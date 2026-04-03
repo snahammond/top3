@@ -14,6 +14,7 @@ import com.example.dailynews.model.NewsItem;
 import com.example.dailynews.util.TimeUtils;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TopStoriesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -21,7 +22,7 @@ public class TopStoriesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     private static final int TYPE_HERO = 0;
     private static final int TYPE_SECONDARY = 1;
 
-    private final List<NewsItem> items;
+    private final List<NewsItem> items = new ArrayList<>();
     private final OnItemClickListener listener;
 
     public interface OnItemClickListener {
@@ -29,8 +30,17 @@ public class TopStoriesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     }
 
     public TopStoriesAdapter(List<NewsItem> items, OnItemClickListener listener) {
-        this.items = items;
+        if (items != null) this.items.addAll(items);
         this.listener = listener;
+    }
+
+    /**
+     * Update adapter data in-place and refresh the UI.
+     */
+    public void update(List<NewsItem> newItems) {
+        this.items.clear();
+        if (newItems != null) this.items.addAll(newItems);
+        notifyDataSetChanged();
     }
 
     @Override
@@ -53,6 +63,7 @@ public class TopStoriesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+        if (position < 0 || position >= items.size()) return;
         NewsItem item = items.get(position);
         if (holder instanceof HeroViewHolder) {
             ((HeroViewHolder) holder).bind(item);

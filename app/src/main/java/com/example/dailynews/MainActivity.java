@@ -40,19 +40,22 @@ public class MainActivity extends AppCompatActivity {
                 "Hero story title goes here — concise and compelling",
                 "BBC News",
                 "2h ago",
-                "https://via.placeholder.com/800x450.png?text=Hero+Image"
+                "https://via.placeholder.com/800x450.png?text=Hero+Image",
+                "https://www.bbc.co.uk"
         ));
         list.add(new NewsItem(
                 "Second story headline that is short and scannable",
                 "The Guardian",
                 "3h ago",
-                "https://via.placeholder.com/200.png?text=Thumb+1"
+                "https://via.placeholder.com/200.png?text=Thumb+1",
+                "https://www.theguardian.com"
         ));
         list.add(new NewsItem(
                 "Third story headline with a clear hook",
                 "Reuters",
                 "4h ago",
-                "https://via.placeholder.com/200.png?text=Thumb+2"
+                "https://via.placeholder.com/200.png?text=Thumb+2",
+                "https://www.reuters.com"
         ));
         return list;
     }

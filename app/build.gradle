@@ -50,11 +50,6 @@ android {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
     }
-
-    // If you use Kotlin in the module, keep kotlinOptions; otherwise you can remove this block.
-    kotlinOptions {
-        jvmTarget = "17"
-    }
 }
 
 dependencies {

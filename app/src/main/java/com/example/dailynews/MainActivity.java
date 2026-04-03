@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        Call<NewsApiResponse> call = NetworkClient.service().topHeadlines("gb", 3, apiKey);
+        Call<NewsApiResponse> call = NetworkClient.service().topHeadlines("us", 3, apiKey);
         call.enqueue(new Callback<NewsApiResponse>() {
             @Override
             public void onResponse(Call<NewsApiResponse> call, Response<NewsApiResponse> response) {

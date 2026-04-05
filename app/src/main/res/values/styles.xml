@@ -7,6 +7,7 @@
         <item name="colorOnPrimary">@color/surface</item>
         <item name="android:statusBarColor">@color/primary</item>
         <item name="android:windowBackground">@color/background</item>
+        <item name="android:navigationBarColor">@color/background</item>
     </style>
 
     <!-- The missing generic TextAppearance referenced by AAPT -->

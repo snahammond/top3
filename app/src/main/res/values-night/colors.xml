@@ -1,0 +1,6 @@
+<resources>
+    <color name="headerAccent">#ff8a5b</color>
+    <color name="headerTitle">#f8fafc</color>
+    <color name="headerSubtitle">#9ca3af</color>
+    <color name="headerPillBackground">#0b61ff</color>
+</resources>

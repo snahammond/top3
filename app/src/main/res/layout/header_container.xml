@@ -54,24 +54,4 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="6dp"/>
 
-    <!-- Country pill (optional; visible when you set text at runtime) -->
-    <TextView
-        android:id="@+id/tvHeaderCountry"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingStart="10dp"
-        android:paddingEnd="10dp"
-        android:paddingTop="6dp"
-        android:paddingBottom="6dp"
-        android:text="US"
-        android:textSize="14sp"
-        android:textStyle="600"
-        android:textColor="@android:color/white"
-        android:background="@drawable/rounded_pill"
-        app:layout_constraintTop_toTopOf="@id/tvHeaderMain"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/tvHeaderMain"
-        android:visibility="visible"
-        android:layout_marginEnd="8dp"/>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

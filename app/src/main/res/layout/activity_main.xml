@@ -7,17 +7,15 @@
     android:background="@color/background">
     <include layout="@layout/header_container" />
 
-    <TextView
-        android:id="@+id/tvHeader"
+    <include
+        android:id="@+id/header_include"
+        layout="@layout/header_container"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Top 3 News"
-        android:textAppearance="@style/TextAppearance.App.Header"
-        android:paddingStart="@dimen/padding_large"
-        android:paddingEnd="@dimen/padding_large"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvTopStories"

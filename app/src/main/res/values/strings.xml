@@ -2,4 +2,7 @@
 <resources>
     <string name="app_name">DailyNews</string>
     <string name="story_image">News story image</string>
+    <string name="header_subtitle">Top</string>
+    <string name="header_title_main">Stories</string>
+    <string name="top_stories_content_desc">Top Stories header</string>
 </resources>
